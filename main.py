@@ -16,10 +16,10 @@ all_sprites_list = pygame.sprite.Group()
 birds = pygame.sprite.Group()
 foods = pygame.sprite.Group()
 player0 = Bird((255, 0, 0), 64, 64)
-player0.rect.x = 500
+player0.rect.x = 1500
 player0.rect.y = 700
 player1 = Bird((0, 0, 255), 64, 64)
-player1.rect.x = 1500
+player1.rect.x = 500
 player1.rect.y = 700
 
 bar = Healthbar()
