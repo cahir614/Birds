@@ -9,6 +9,7 @@ pygame.init()
 pygame.mixer.init()
 bird_sound = pygame.mixer.Sound('sounds/birdsound.mp3')
 daylight_sound = pygame.mixer.Sound('sounds/daylight.mp3')
+bite_sound = pygame.mixer.Sound('sounds/bite.mp3')
 
 screen = pygame.display.set_mode((1920, 1024))
 pygame.display.set_caption("Birds")
@@ -29,8 +30,9 @@ clock = pygame.time.Clock()
 
 pygame.mixer.Channel(0).play(bird_sound, loops=-1)
 pygame.mixer.Channel(1).play(daylight_sound, loops=-1)
-pygame.mixer.Channel(0).set_volume(0.7)
-pygame.mixer.Channel(1).set_volume(0.7)
+pygame.mixer.Channel(0).set_volume(0.9)
+pygame.mixer.Channel(1).set_volume(0.9)
+pygame.mixer.Channel(2).set_volume(0.7)
 
 
 def control0(player, speed):
@@ -121,6 +123,7 @@ def main():
             for bird, foods_hit in collisions.items():
                 for food in foods_hit:
                     if not hasattr(food, 'collided') or not food.collided:
+                        pygame.mixer.Channel(2).play(bite_sound)
                         health -= 5
                         newFood()
                         all_sprites_list.remove(food)
