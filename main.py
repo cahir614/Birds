@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 import pygame
 from bird import Bird
@@ -141,6 +143,7 @@ def main():
                         keys = pygame.key.get_pressed()
                         if keys[pygame.K_h] and keys[pygame.K_k]:
                             heart.draw(screen, xpos, player0.rect.centery-80)
+                            health -= 0.2
 
             img0 = fontM.render('Health: '+str(round(780-health)), True, (0, 0, 0))
             img1 = fontM.render('Speed: '+str(round(spe(health)*10))+'km/h', True, (0, 0, 0))
