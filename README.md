@@ -37,3 +37,9 @@ or
     Arrow Right - Right
 
 ![gameplay](ss.png)
+
+## Mechanics
+
+    - Heath drains all the time
+    - Health determines the speed of your Birds 
+    - Collect Food to restore Health
