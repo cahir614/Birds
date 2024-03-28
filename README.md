@@ -1,7 +1,39 @@
 # Birds
 
+## Dependencies
 
+    - pygame
 
-run main.py
+## Install
 
-![](ss.png)
+clone git repo:
+    ```
+    git clone https://github.com/cahir614/Birds.git
+    ```
+
+run with
+    ```
+    python3 main.py
+    ```
+or
+    ```
+    ./main.py
+    ```
+
+## Controls
+
+### Player 1
+
+    W - Up
+    A - Left
+    S - Down
+    D - Right
+
+### Player 2
+
+    Arrow Up    - Up
+    Arrow Left  - Left
+    Arrow Down  - Down
+    Arrow Right - Right
+
+![gameplay](ss.png)
