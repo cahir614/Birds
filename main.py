@@ -7,12 +7,12 @@ from healthbar import Healthbar
 from food import Food
 from heart import Heart
 
+
 pygame.init()
 pygame.mixer.init()
 bird_sound = pygame.mixer.Sound('sounds/birdsound.mp3')
 daylight_sound = pygame.mixer.Sound('sounds/daylight.mp3')
 bite_sound = pygame.mixer.Sound('sounds/bite.mp3')
-
 screen = pygame.display.set_mode((1920, 1024))
 pygame.display.set_caption("Birds")
 all_sprites_list = pygame.sprite.Group()
@@ -24,17 +24,18 @@ player0.rect.y = 700
 player1 = Bird((0, 0, 255), 64, 64)
 player1.rect.x = 500
 player1.rect.y = 700
-
 bar = Healthbar()
 heart = Heart(0, 0)
-
 clock = pygame.time.Clock()
-
 pygame.mixer.Channel(0).play(bird_sound, loops=-1)
 pygame.mixer.Channel(1).play(daylight_sound, loops=-1)
 pygame.mixer.Channel(0).set_volume(0.9)
 pygame.mixer.Channel(1).set_volume(0.9)
 pygame.mixer.Channel(2).set_volume(0.7)
+fontL = pygame.font.Font("font/slkscre.ttf", 100)
+fontM = pygame.font.Font("font/slkscre.ttf", 50)
+fontS = pygame.font.Font("font/slkscre.ttf", 20)
+start_time = pygame.time.get_ticks()
 
 
 def control0(player, speed):
@@ -61,17 +62,17 @@ def control1(player, speed):
         player.moveDown(speed)
 
 
-birds.add(player0)
-birds.add(player1)
-all_sprites_list.add(player0)
-all_sprites_list.add(player1)
+def loadPlayersAndFood():
+    birds.add(player0)
+    birds.add(player1)
+    all_sprites_list.add(player0)
+    all_sprites_list.add(player1)
 
-
-for i in range(6):
-    m = Food()
-    foods.add(m)
-    Food.add(m)
-    all_sprites_list.add(m)
+    for i in range(6):
+        m = Food()
+        foods.add(m)
+        Food.add(m)
+        all_sprites_list.add(m)
 
 
 def newFood():
@@ -81,24 +82,11 @@ def newFood():
     all_sprites_list.add(m)
 
 
-fontL = pygame.font.Font("font/slkscre.ttf", 100)
-fontM = pygame.font.Font("font/slkscre.ttf", 50)
-fontS = pygame.font.Font("font/slkscre.ttf", 20)
-start_time = pygame.time.get_ticks()
-
-
 def spe(x):
     return (6-0.0077*x)
 
 
-def main():
-    gameOver = False
-    carryOn = True
-    image = pygame.image.load('images/bg.webp')
-
-    health = 0
-    count = 0
-
+def Loop(gameOver, carryOn, image, health, count):
     while carryOn:
         count += 1/60
         for event in pygame.event.get():
@@ -175,6 +163,17 @@ def main():
                 pygame.display.update()
             else:
                 carryOn = False
+
+
+def main():
+    loadPlayersAndFood()
+    gameOver = False
+    carryOn = True
+    image = pygame.image.load('images/bg.webp')
+
+    health = 0
+    count = 0
+    Loop(gameOver, carryOn, image, health, count)
 
 
 if __name__ == '__main__':
